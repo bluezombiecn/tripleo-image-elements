@@ -15,8 +15,9 @@ set -o xtrace
 # http://mirror.jmu.edu/pub/mariadb/repo/5.5/debian wheezy main
 
 function add_yum_repo() {
-    ver=`lsb_release -sr`
-
+    #ver=`lsb_release -sr`
+    ver=`lsb_release -rs|awk -F "" '{print $1}'`
+    
     cat > /etc/yum.repos.d/mariadb.repo <<eof
 [mariadb]
 name = MariaDB
